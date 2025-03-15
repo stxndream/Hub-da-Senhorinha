@@ -1,0 +1,99 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Inc0mu", "DarkTheme")
+
+local Tab = Window:NewTab("Player")
+
+local Section = Tab:NewSection("Player")
+
+Section:NewButton("High Speed (500)", "Aumenta sua velocidade (500)", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 500
+end)
+
+Section:NewButton("High JumpPower (150)", "Aumenta o poder do seu Pulo (150)", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 150
+    print("Clicked")
+end)
+
+Section:NewButton("High JumpPower (300)", "Aumenta o poder do seu Pulo (300)", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 300
+    print("Clicked")
+end)
+
+Section:NewButton("High JumpPower (500)", "Aumenta o poder do seu Pulo (500)", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 500
+    print("Clicked")
+end)
+
+Section:NewButton("Vida Infinita", "Aumenta o poder do seu Pulo (300)", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 999999999999999999999999999999999999999999999999999
+    print("Clicked")
+end)
+
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("Main")
+
+-- Botão para coletar orbs automaticamente
+Section:NewButton("Auto Collect Orbs", "Coletar Orbs Automaticamente", function()
+    while true do
+        local args = {
+            [1] = "collectOrb";
+            [2] = "Red Orb";  -- Modifique o tipo de orb aqui se necessário
+            [3] = "City";     -- Modifique a cidade ou local aqui se necessário
+        }
+        -- Envia o remote para coletar o orb
+        game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
+        wait(1)  -- Intervalo entre as coletas, ajuste o tempo se necessário
+    end
+end)
+
+-- Botão para coletar gemas automaticamente
+Section:NewButton("Auto Collect Gems", "Coletar Gemas Automaticamente", function()
+    while true do
+        local args = {
+            [1] = "collectOrb";
+            [2] = "Gem";      -- Tipo de orb modificado para "Gem"
+            [3] = "City";     -- Cidade ou local modificado, pode ser alterado se necessário
+        }
+        -- Envia o remote para coletar a gema
+        game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
+        wait(1)  -- Intervalo entre as coletas, ajuste o tempo se necessário
+    end
+end)
+
+-- Botão para coletar bola amarela automaticamente
+Section:NewButton("Auto Collect Yellow Orb", "Coletar Bola Amarela Automaticamente", function()
+    while true do
+        local args = {
+            [1] = "collectOrb";
+            [2] = "Yellow Orb";  -- Tipo de orb modificado para "Yellow Orb"
+            [3] = "City";        -- Cidade ou local modificado, pode ser alterado se necessário
+        }
+        -- Envia o remote para coletar a bola amarela
+        game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
+        wait(1)  -- Intervalo entre as coletas, ajuste o tempo se necessário
+    end
+end)
+
+-- Botão para abrir o Cristal Vermelho automaticamente
+Section:NewButton("Open Red Crystal", "Abrir Cristal Vermelho", function()
+    local args = {
+        [1] = "openCrystal";
+        [2] = "Red Crystal";  -- Tipo de cristal
+    }
+    -- Envia o remote para abrir o Cristal Vermelho
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("openCrystalRemote", 9e9):InvokeServer(unpack(args))
+    print("Cristal Vermelho aberto")
+end)
+
+-- Botão para abrir o Cristal Roxo automaticamente
+Section:NewButton("Open Purple Crystal", "Abrir Cristal Roxo", function()
+    local args = {
+        [1] = "openCrystal";
+        [2] = "Purple Crystal";  -- Tipo de cristal modificado para "Purple Crystal"
+    }
+    -- Envia o remote para abrir o Cristal Roxo
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("openCrystalRemote", 9e9):InvokeServer(unpack(args))
+    print("Cristal Roxo aberto")
+end)
