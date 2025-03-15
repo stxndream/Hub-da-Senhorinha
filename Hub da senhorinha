@@ -30,6 +30,28 @@ if game.PlaceId == 3101667897 then
         game.Players.LocalPlayer.Character.Humanoid.Health = math.huge  -- Atribui vida infinita
     end)
 
+    -- Botão para ficar invisível
+    SectionPlayer:NewButton("Ficar Invisível", "Ficar Invisível para outros jogadores", function()
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            local humanoidRootPart = character.HumanoidRootPart
+            humanoidRootPart.Transparency = 1  -- Torna o HumanoidRootPart invisível
+            humanoidRootPart.CanCollide = false  -- Desabilita colisão com o mundo
+            for _, part in pairs(character:GetChildren()) do
+                if part:IsA("BasePart") then
+                    part.Transparency = 1  -- Torna todas as partes do personagem invisíveis
+                    part.CanCollide = false  -- Desabilita colisão de todas as partes
+                end
+            end
+            -- Faz o Humanoid ficar invisível (sem colidir)
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+            end
+        end
+        print("Você está agora invisível!")
+    end)
+
     -- Aba Main
     local TabMain = Window:NewTab("Main")
     local SectionMain = TabMain:NewSection("Main")
@@ -44,7 +66,7 @@ if game.PlaceId == 3101667897 then
             }
             -- Envia o remote para coletar o orb
             game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
-            wait(1)  -- Intervalo entre as coletas, ajuste o tempo se necessário
+            wait()  -- Intervalo entre as coletas, ajuste o tempo se necessário
         end
     end)
 
@@ -58,7 +80,7 @@ if game.PlaceId == 3101667897 then
             }
             -- Envia o remote para coletar a gema
             game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
-            wait(1)  -- Intervalo entre as coletas, ajuste o tempo se necessário
+            wait()  -- Intervalo entre as coletas, ajuste o tempo se necessário
         end
     end)
 
@@ -72,7 +94,7 @@ if game.PlaceId == 3101667897 then
             }
             -- Envia o remote para coletar a bola amarela
             game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
-            wait(1)  -- Intervalo entre as coletas, ajuste o tempo se necessário
+            wait()  -- Intervalo entre as coletas, ajuste o tempo se necessário
         end
     end)
 
