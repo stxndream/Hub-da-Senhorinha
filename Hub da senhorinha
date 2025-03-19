@@ -1,122 +1,191 @@
-if game.PlaceId == 3101667897 then
-    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+-- Library Setup
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("c00lkiddk1ng", "DarkTheme")
 
-    local Window = Library.CreateLib("Inc0mu", "DarkTheme")
+-- Admin Scripts
+local Admin = Window:NewTab("Admin Scripts")
+local AdminSection = Admin:NewSection("Admin Scripts")
 
-    -- Aba Player
-    local TabPlayer = Window:NewTab("Player")
-    local SectionPlayer = TabPlayer:NewSection("Player")
+AdminSection:NewButton("Infinite Yield", "", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
 
-    -- Botão para aumentar a velocidade
-    SectionPlayer:NewButton("High Speed (500)", "Aumenta sua velocidade (500)", function()
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 500
-    end)
+AdminSection:NewButton("Nameless admin", "", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source'))()
+end)
 
-    -- Botões para aumentar o poder do Pulo
-    SectionPlayer:NewButton("High JumpPower (150)", "Aumenta o poder do seu Pulo (150)", function()
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 150
-    end)
+AdminSection:NewButton("Proton Admin", "Proton Admin", function()
+    _G.UI_Id = "default" --set this to "default" for the default ui
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/5e6e6cc1bb32fd926764d064e2c60a3b.lua"))()
+end)
 
-    SectionPlayer:NewButton("High JumpPower (300)", "Aumenta o poder do seu Pulo (300)", function()
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 300
-    end)
+AdminSection:NewButton("Reviz Admin", "Reviz Admin", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Pa1ntex/reviz-admin-v2-script-FE/refs/heads/main/Reviz%20admin%20v2%20FE'))()
+end)
 
-    SectionPlayer:NewButton("High JumpPower (500)", "Aumenta o poder do seu Pulo (500)", function()
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 500
-    end)
+-- OP Scripts
+local OpScripts = Window:NewTab("Op Scripts")
+local OpScriptsSection = OpScripts:NewSection("Op Scripts")
 
-    -- Botão para Vida Infinita
-    SectionPlayer:NewButton("Vida Infinita", "Vida Infinita", function()
-        game.Players.LocalPlayer.Character.Humanoid.Health = math.huge  -- Atribui vida infinita
-    end)
+OpScriptsSection:NewButton("Octo Spy", "Octo Spy", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Octo-Spy/refs/heads/main/Main.lua", true))()
+end)
 
-    -- Botão para ficar invisível
-    SectionPlayer:NewButton("Ficar Invisível", "Ficar Invisível para outros jogadores", function()
-        local character = game.Players.LocalPlayer.Character
-        if character and character:FindFirstChild("HumanoidRootPart") then
-            local humanoidRootPart = character.HumanoidRootPart
-            humanoidRootPart.Transparency = 1  -- Torna o HumanoidRootPart invisível
-            humanoidRootPart.CanCollide = false  -- Desabilita colisão com o mundo
-            for _, part in pairs(character:GetChildren()) do
-                if part:IsA("BasePart") then
-                    part.Transparency = 1  -- Torna todas as partes do personagem invisíveis
-                    part.CanCollide = false  -- Desabilita colisão de todas as partes
-                end
-            end
-            -- Faz o Humanoid ficar invisível (sem colidir)
-            local humanoid = character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                humanoid.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
-            end
-        end
-        print("Você está agora invisível!")
-    end)
+OpScriptsSection:NewButton("Berry-Avenue-RP (VERY OP)", "Berry Avenue RP", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ameicaa0/Berry-Avenue-RP/main/Berry%20Avenue%20%F0%9F%8F%A0%20RP%20script.lua'))()
+end)
+-- Games Scripts
+local GamesScripts = Window:NewTab("Games Scripts")
+local GamesScriptsSection = GamesScripts:NewSection("Games Scripts")
 
-    -- Aba Main
-    local TabMain = Window:NewTab("Main")
-    local SectionMain = TabMain:NewSection("Main")
+GamesScriptsSection:NewButton("Blox Fruits", "Blox Fruits", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))() 
+end)
 
-    -- Botão para coletar orbs automaticamente
-    SectionMain:NewButton("Auto Collect Orbs", "Coletar Orbs Automaticamente", function()
-        while true do
-            local args = {
-                [1] = "collectOrb";
-                [2] = "Red Orb";  -- Modifique o tipo de orb aqui se necessário
-                [3] = "City";     -- Modifique a cidade ou local aqui se necessário
-            }
-            -- Envia o remote para coletar o orb
-            game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
-            wait()  -- Intervalo entre as coletas, ajuste o tempo se necessário
-        end
-    end)
+GamesScriptsSection:NewButton("King Legacy", "King Legacy", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/king%20legacy"))() 
+end)
 
-    -- Botão para coletar gemas automaticamente
-    SectionMain:NewButton("Auto Collect Gems", "Coletar Gemas Automaticamente", function()
-        while true do
-            local args = {
-                [1] = "collectOrb";
-                [2] = "Gem";      -- Tipo de orb modificado para "Gem"
-                [3] = "City";     -- Cidade ou local modificado, pode ser alterado se necessário
-            }
-            -- Envia o remote para coletar a gema
-            game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
-            wait()  -- Intervalo entre as coletas, ajuste o tempo se necessário
-        end
-    end)
+GamesScriptsSection:NewButton("Fisch", "Fisch", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+end)
 
-    -- Botão para coletar bola amarela automaticamente
-    SectionMain:NewButton("Auto Collect Yellow Orb", "Coletar Bola Amarela Automaticamente", function()
-        while true do
-            local args = {
-                [1] = "collectOrb";
-                [2] = "Yellow Orb";  -- Tipo de orb modificado para "Yellow Orb"
-                [3] = "City";        -- Cidade ou local modificado, pode ser alterado se necessário
-            }
-            -- Envia o remote para coletar a bola amarela
-            game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("orbEvent", 9e9):FireServer(unpack(args))
-            wait()  -- Intervalo entre as coletas, ajuste o tempo se necessário
-        end
-    end)
+-- Hubs
+local HubScripts = Window:NewTab("Hub Scripts")
+local HubScriptsSection = HubScripts:NewSection("Hub Scripts")
 
-    -- Botão para abrir o Cristal Vermelho automaticamente
-    SectionMain:NewButton("Open Red Crystal", "Abrir Cristal Vermelho", function()
-        local args = {
-            [1] = "openCrystal";
-            [2] = "Red Crystal";  -- Tipo de cristal
-        }
-        -- Envia o remote para abrir o Cristal Vermelho
-        game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("openCrystalRemote", 9e9):InvokeServer(unpack(args))
-        print("Cristal Vermelho aberto")
-    end)
+HubScriptsSection:NewButton("Hoho Hub", "Hoho Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JuninhoOGado/ScriptsSite/main/Script55"))()
+end)
 
-    -- Botão para abrir o Cristal Roxo automaticamente
-    SectionMain:NewButton("Open Purple Crystal", "Abrir Cristal Roxo", function()
-        local args = {
-            [1] = "openCrystal";
-            [2] = "Purple Crystal";  -- Tipo de cristal modificado para "Purple Crystal"
-        }
-        -- Envia o remote para abrir o Cristal Roxo
-        game:GetService("ReplicatedStorage"):WaitForChild("rEvents", 9e9):WaitForChild("openCrystalRemote", 9e9):InvokeServer(unpack(args))
-        print("Cristal Roxo aberto")
-    end)
-end
+HubScriptsSection:NewButton("Pendulum Hub", "Pendulum Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/Pendulum%20Hub%20V5.lua"))()
+end)
+
+-- Fe Scripts
+local FeScripts = Window:NewTab("Fe Scripts")
+local FeScriptsSection = FeScripts:NewSection("Fe Scripts")
+
+FeScriptsSection:NewButton("Fe Hammer Ban", "Fe Hammer Ban", function()
+    loadstring(game:HttpGet("https://textbin.net/raw/rvohv1nvuf"))();
+end)
+
+FeScriptsSection:NewButton("Hat Hub", "Hat Hub", function()
+    loadstring(game:HttpGet("https://textbin.net/raw/rvohv1nvuf"))();
+end)
+
+FeScriptsSection:NewButton("Fe Patchma Hub", "Fe Patchma Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty25.lua"))()
+end)
+
+-- BloxFruits Scripts
+local BloxFruitsScripts = Window:NewTab("Blox fruits")
+local BloxFruitsSection = BloxFruitsScripts:NewSection("Blox fruits")
+
+BloxFruitsSection:NewButton("Mukuro Hub", "Mukuro Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JuninhoOGado/ScriptsSite/main/Script135"))()
+end)
+
+BloxFruitsSection:NewButton("Redzhub", "Redzhub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
+end)
+
+BloxFruitsSection:NewButton("w-azure v2", "w-azure v2", function()
+    getgenv().Team = "Pirates"
+    getgenv().AutoLoad = false --Will Load Script On Server Hop
+    getgenv().SlowLoadUi  = false
+    getgenv().ForceUseSilentAimDashModifier = false --Force turn on silent aim , if error then executor problem
+    getgenv().ForceUseWalkSpeedModifier = false --Force turn on Walk Speed Modifier , if error then executor problem
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()
+end)
+
+BloxFruitsSection:NewButton("Vxeze Hub", "Vxeze Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/khenn791/open-source-/refs/heads/main/vxeze-hub%20old%20(open%20source).txt"))()
+end)
+
+BloxFruitsSection:NewButton("The BillDev Hub", "The BillDev Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/selciawashere/screepts/refs/heads/main/BFKEYSYS",true))()
+end)
+
+BloxFruitsSection:NewButton("Min Levi Script", "Min Levi Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinMasEng"))()
+end)
+
+
+-- Fisch Scripts
+local FischScripts = Window:NewTab("Fisch Scripts")
+local FischScriptsSection = FischScripts:NewSection("Fisch Scripts")
+
+FischScriptsSection:NewButton("Zenith Hub", "Zenith Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/ZenithHub/refs/heads/main/Loader"))()
+end)
+
+FischScriptsSection:NewButton("NATIVE SCRIPT FISCH", "NATIVE SCRIPT FISCH", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Native-lab/Native/main/loader.lua"))()
+end)
+
+FischScriptsSection:NewButton("Fischer Script", "Fischer Script", function()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/5321d9654d1283ac2ba85beaa0c10ab5.lua"))()
+end)
+
+FischScriptsSection:NewButton("Ronix Hub [NEW!]", "Ronix Hub [NEW!]", function()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/1255807d4f3b118b6636cfd3d386d8b8.lua"))()
+end)
+
+FischScriptsSection:NewButton("Lunor Hub [NEW!]", "Lunor Hub [NEW!]", function()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/f6c9f276f7d6a7dd6edfd0173d7a211d.lua"))()
+end)
+
+FischScriptsSection:NewButton("Draco Hub [NEW!]", "Draco Hub [NEW!]", function()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/cdc8ffd74b2c33f6c9f47b85f4b77c45.lua"))()
+end)
+
+FischScriptsSection:NewButton("Speed Hub X", "Speed Hub X", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+end)
+
+FischScriptsSection:NewButton("Raito Hub", "Raito Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Efe0626/RaitoHub/main/Script"))()
+end)
+
+FischScriptsSection:NewButton("Banana Cat Hub", "Banana Cat Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaHub.lua"))()
+end)
+
+FischScriptsSection:NewButton("KICIAHOOK SCRIPT", "KICIAHOOK SCRIPT", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/kiciahook/kiciahook/refs/heads/main/loader.lua"))()
+end)
+
+-- Blue Lock Scripts
+local BlueLockScripts = Window:NewTab("Blue Lock")
+local BlueLockSection = BlueLockScripts:NewSection("Blue Lock Scripts")
+
+BlueLockSection:NewButton("Alchemy Hub Script", "Alchemy Hub Script", function()
+    loadstring(game:HttpGet("https://scripts.alchemyhub.xyz"))()
+end)
+
+BlueLockSection:NewButton("OMG Hub Script", "OMG Hub Script", function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/UPD-Blue-Lock:-Rivals-OMG-Hub-29091"))()
+end)
+
+BlueLockSection:NewButton("Infinite Stamina Script", "Infinite Stamina Script", function()
+    local args = {[1] = 0/0}
+    game:GetService("ReplicatedStorage"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("StaminaService"):WaitForChild("RE"):WaitForChild("DecreaseStamina"):FireServer(unpack(args))
+end)
+
+BlueLockSection:NewButton("Rinn Hub Script", "Rinn Hub Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiCen/MainMenu/main/Code"))()
+end)
+
+BlueLockSection:NewButton("Auto Farm And More Script", "Auto Farm And More Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LHking123456/7L93r5NhJxqYu/refs/heads/main/BLRivals"))()
+end)
+
+BlueLockSection:NewButton("Auto Slide Auto Dribble Unlock All", "Auto Slide Auto Dribble Unlock All", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Maybie/BlueLock/refs/heads/main/BLR.lua',true))()
+end)
+
+BlueLockSection:NewButton("Infinite Spin Script", "Infinite Spin Script", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/luwriy/bluelock/refs/heads/main/spin"))()
+end)
+
