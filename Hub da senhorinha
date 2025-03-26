@@ -34,6 +34,98 @@ end)
 OpScriptsSection:NewButton("Berry-Avenue-RP (VERY OP)", "Berry Avenue RP", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/ameicaa0/Berry-Avenue-RP/main/Berry%20Avenue%20%F0%9F%8F%A0%20RP%20script.lua'))()
 end)
+
+OpScriptsSection:NewButton("Quirky cmd (tem ban/kick também)", "Quirky cmd", function()
+    loadstring(game:HttpGet("https://gist.github.com/someunknowndude/38cecea5be9d75cb743eac8b1eaf6758/raw"))()
+end)
+
+OpScriptsSection:NewButton("Universal Aimbot", "Universal Aimbot", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/zzerexx/scripts/main/UniversalAimbotUI.lua"))()
+end)
+
+OpScriptsSection:NewButton("Noclip", "Noclip", function()
+local Noclip = nil
+local Clip = nil
+
+function noclip()
+	Clip = false
+	local function Nocl()
+		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+			for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+				if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+					v.CanCollide = false
+				end
+			end
+		end
+		wait(0.21) -- basic optimization
+	end
+	Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
+end
+
+function clip()
+	if Noclip then Noclip:Disconnect() end
+	Clip = true
+end
+
+noclip() -- to toggle noclip() and clip()
+end)
+
+OpScriptsSection:NewButton("Esp Universal", "Esp Universal", function()
+	local FillColor = Color3.fromRGB(175,25,255)
+local DepthMode = "AlwaysOnTop"
+local FillTransparency = 0.5
+local OutlineColor = Color3.fromRGB(255,255,255)
+local OutlineTransparency = 0
+
+local CoreGui = game.CoreGui
+local Players = game:FindService("Players")
+local lp = Players.LocalPlayer
+local connections = {}
+
+local Storage = Instance.new("Folder")
+Storage.Parent = CoreGui
+Storage.Name = "Highlight_Storage"
+
+local function Highlight(plr)
+    local Highlight = Instance.new("Highlight")
+    Highlight.Name = plr.Name
+    Highlight.FillColor = FillColor
+    Highlight.DepthMode = DepthMode
+    Highlight.FillTransparency = FillTransparency
+    Highlight.OutlineColor = OutlineColor
+    Highlight.OutlineTransparency = 0
+    Highlight.Parent = Storage
+    
+    local plrchar = plr.Character
+    if plrchar then
+        Highlight.Adornee = plrchar
+    end
+
+    connections[plr] = plr.CharacterAdded:Connect(function(char)
+        Highlight.Adornee = char
+    end)
+end
+
+Players.PlayerAdded:Connect(Highlight)
+for i,v in next, Players:GetPlayers() do
+    Highlight(v)
+end
+
+Players.PlayerRemoving:Connect(function(plr)
+    local plrname = plr.Name
+    if Storage[plrname] then
+        Storage[plrname]:Destroy()
+    end
+    if connections[plr] then
+        connections[plr]:Disconnect()
+    end
+end)
+end)
+
+OpScriptsSection:NewButton("QuirkyCmd", "QuirkyCmd", function()
+    loadstring(game:HttpGet("https://gist.github.com/someunknowndude/38cecea5be9d75cb743eac8b1eaf6758/raw"))()
+end)
+
 -- Games Scripts
 local GamesScripts = Window:NewTab("Games Scripts")
 local GamesScriptsSection = GamesScripts:NewSection("Games Scripts")
@@ -48,6 +140,10 @@ end)
 
 GamesScriptsSection:NewButton("Fisch", "Fisch", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+end)
+
+GamesScriptsSection:NewButton("Brookhaven", "Brookhaven", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/m0zjJLTv"))()
 end)
 
 -- Hubs
