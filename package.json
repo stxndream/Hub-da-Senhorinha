@@ -1,0 +1,34 @@
+{
+  "name": "discord-account-generator-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot for generating and managing accounts with various tiers and features",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^2.4.3",
+    "axios": "^1.6.2",
+    "bcrypt": "^6.0.0",
+    "canvas": "^2.11.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "discord.js": "^14.19.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "noblox": "^4.8.5",
+    "noblox.js": "^6.1.1",
+    "sharp": "^0.34.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "stack": "^0.1.0",
+    "svg-captcha": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=16.9.0"
+  }
+}

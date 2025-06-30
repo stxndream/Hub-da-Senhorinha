@@ -1,0 +1,158 @@
+{
+    "bot": {
+        "token": "MTM4NTAyNjY2NEeblBL2E07-Wxs",
+        "clientId": "1385026666597974150",
+        "guildId": "1365037361876176956",
+        "ownerId": "1308399941441294402",
+        "activity": {
+            "name": "whitelist and invites",
+            "type": "WATCHING"
+        }
+    },
+    "authorizedUsers": [
+        "1302387748661100566",
+        "1260993073278877784",
+        "1102217375916511264",
+        "1056640045806784603",
+        "968078927404883998",
+        "1293639169108869200",
+        "614288341763883039",
+        "1314282212824453183",
+        "1306045661103259669",
+        "742814461559046254",
+        "1308399941441294402",
+        "1351227699338936371",
+        "1262574784542412873"
+    ],
+    "baseUrl": "https://key.kittycats.nl",
+    "keyDomain": "key.kittycats.nl",
+    "dropperms": [
+        "1102217375916511264",
+        "1306045661103259669",
+        "1016063073842364577",
+        "1056640045806784603",
+        "1260993073278877784",
+        "968078927404883998",
+        "614288341763883039",
+        "1314282212824453183",
+        "1206778716097871922",
+        "742814461559046254"
+    ],
+    "roles": {
+        "reward": "1383236679925764147",
+        "member": "1383236651941101689",
+        "admin": "1383236604528689222",
+        "trial": "1383236604528689222",
+        "helper": "1383236604528689222",
+        "moderator": "1383236604528689222",
+        "pingPermissions": "1378741206011482139",
+        "freeGeneratorAccess": "1383236668349222923",
+        "generators": {
+            "mgen": "1383236642462105713",
+            "bgen": "1383236643993030697",
+            "ogen": "1383236641124257996",
+            "allgens": "1383236637366026240",
+            "vipalt": "1383236638825648160"
+        }
+    },
+    "channels": {
+        "greeting": "1383236687311798345",
+        "hits": "1383236762461147206",
+        "freeGenerator": "1383236756526076116",
+		"altGeneratorChannel": "1383236752256405554",
+        "transcripts": "1383236913703424010",
+        "moderationLogs": "1383236901292474449",
+        "generalLogs": "1316105688732401716",
+        "discadiaVoteLogs": "1383236910566342696",
+        "inviteLog": "1378741463898390569",
+        "whitelistLog": "1383236907168829514",
+        "generationLog": "1383236907168829514",
+        "staffLog": "1378741458819088495",
+        "chatTracking": {
+            "enabled": true,
+            "channels": ["1378741266539352085", "1378768061854650461"],
+            "logChannel": "1383578319538356315",
+            "trackingRules": {
+                "spamDetection": true,
+                "linkFiltering": true,
+                "mentionSpam": true,
+                "capsSpam": true,
+                "emojiSpam": true
+            }
+        }
+    },
+    "features": {
+        "welcomeMessages": true,
+        "autoModeration": true,
+        "ticketSystem": true,
+        "inviteTracking": true,
+        "pingDetection": false,
+        "chatTracking": true,
+        "roleManagement": true,
+        "generatorSystem": true
+    },
+    "invites": {
+        "requiredInvites": 10,
+        "dataFile": "invites.json",
+        "tracking": {
+            "enabled": true,
+            "checkInterval": 600000
+        }
+    },
+    "whitelist": {
+        "checkInterval": 50,
+        "processDelay": 10,
+        "chunkSize": 500,
+        "timeout": 5000
+    },
+    "cooldownDurations": {
+        "fgen": 47500,
+        "ogen": 5000,
+        "bgen": 7200000,
+        "mgen": 10000
+    },
+    "keyCooldownDuration": 43200000,
+    "generatorTypes": ["fgen", "mgen", "bgen", "ogen", "vipalt"],
+    "api": {
+        "url": "http://paid1.daki.cc:4129",
+        "secret": "gallaapi",
+        "port": 4129
+    },
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "your_db_user",
+        "password": "your_db_password",
+        "database": "your_db_name"
+    },
+    "sharding": {
+        "enabled": true,
+        "totalShards": 3
+    },
+    "debug": {
+        "enabled": false,
+        "logLevel": "info"
+    },
+    "reconnect": {
+        "maxAttempts": 10,
+        "baseDelay": 5000,
+        "checkInterval": 30000
+    },
+    "ticketSystem": {
+        "enabled": true,
+        "category": "1378741473566134343",
+        "transcriptChannel": "1378741473566134343",
+        "supportRoles": ["1383236605862481982", "1378741139837947995"]
+    },
+    "autoModeration": {
+        "enabled": true,
+        "maxWarnings": 3,
+        "punishmentLevels": {
+            "1": "timeout",
+            "2": "kick",
+            "3": "ban"
+        },
+        "timeoutDuration": 3600000
+    }
+}
+  
